@@ -1,0 +1,131 @@
+body {
+    background-color: #1d1d1d;
+    font-family: Arial;
+    margin: 0rem;
+}
+
+#main {  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    #main {
+      flex-direction: column;
+    }
+}
+
+h1 {
+    color: #f8f8ff;
+    padding: 1rem 0rem 1rem 1rem;
+    margin: 0rem;
+}
+
+h2 {
+    color: #282520;
+    margin: .625rem 0rem .625rem 0rem;
+}
+
+p {
+    font-weight: bold;
+    color: #d4d4d4;
+    margin: 0rem;
+    padding: 0rem 0rem 1rem 1rem;
+}
+
+ul.boneline {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width: 100%;
+    padding: 0rem;
+}
+
+#header {
+    background-color: #373737;
+    width: 100%;
+}
+
+#left_bonebook {
+    flex: 1 1;
+    background-color: #bdb29e;
+    background-image: url(images/Bg-paper-dark.png);
+    margin: .625rem .625rem 0rem .625rem;
+    padding: .625rem 1.25rem 1.25rem 1.25rem;
+    /*max-width: 12rem;*/
+    position: relative;
+    z-index: 0;
+}
+
+#middle_current {
+    flex: 1 1;
+    background-color: #bdb29e;
+    background-image: url(images/Bg-paper-dark.png);
+    margin: .625rem .625rem 0rem .625rem;
+    padding: .625rem 1.25rem 1.25rem 1.25rem;
+    /*max-width: 50rem;*/
+    position: relative;
+    z-index: 0;
+}
+
+#right_sellers {
+    flex: 1 1;
+    background-color: #bdb29e;
+    background-image: url(images/Bg-paper-dark.png);
+    margin: .625rem .625rem 0rem .625rem;
+    padding: .625rem 1.25rem 1.25rem 1.25rem;
+    /*max-width: 12rem;*/
+    position: relative;
+    z-index: 0;
+}
+
+#left_bonebook:before{
+	content: " ";
+	border: .125rem solid #897d67;
+	position: absolute;
+	top: .25rem;
+	right: .25rem;
+	bottom: .25rem;
+	left: .25rem;
+	z-index: -1;
+}
+
+#middle_current:before{
+	content: " ";
+	border: .125rem solid #897d67;
+	position: absolute;
+	top: .25rem;
+	right: .25rem;
+	bottom: .25rem;
+	left: .25rem;
+	z-index: -1;
+}
+
+#right_sellers:before{
+	content: " ";
+	border: .125rem solid #897d67;
+	position: absolute;
+	top: .25rem;
+	right: .25rem;
+	bottom: .25rem;
+	left: .25rem;
+	z-index: -1;
+}
+
+li.bone {
+    position: relative;
+    margin-right: 0.4rem;
+    margin-bottom: 0.2rem;
+}
+
+img.bonepic {  /*Send bonepics*/
+    cursor: pointer;
+    border-style: solid;
+    border-color: #3e3e3e;
+    border-width: .125rem;
+    box-shadow: 0 0 .125rem .125rem rgb(29, 29, 29, 0.2);
+    height: 2.25rem;
+    width: 2.25rem;
+}
