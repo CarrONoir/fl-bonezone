@@ -24,6 +24,10 @@ h1 {
 
 h2 {
     color: #282520;
+    margin: .625rem 0rem 1rem 0rem;
+}
+
+h3 {
     margin: .625rem 0rem .625rem 0rem;
 }
 
@@ -34,15 +38,6 @@ p {
     padding: 0rem 0rem 1rem 1rem;
 }
 
-ul.boneline {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    width: 100%;
-    padding: 0rem;
-}
-
 #header {
     background-color: #373737;
     width: 100%;
@@ -51,7 +46,7 @@ ul.boneline {
 #left_bonebook {
     flex: 1 1;
     background-color: #bdb29e;
-    background-image: url(images/Bg-paper-dark.png);
+    /*background-image: url(images/Bg-paper-dark.png);*/
     margin: .625rem .625rem 0rem .625rem;
     padding: .625rem 1.25rem 1.25rem 1.25rem;
     /*max-width: 12rem;*/
@@ -62,7 +57,7 @@ ul.boneline {
 #middle_current {
     flex: 1 1;
     background-color: #bdb29e;
-    background-image: url(images/Bg-paper-dark.png);
+    /*background-image: url(images/Bg-paper-dark.png);*/
     margin: .625rem .625rem 0rem .625rem;
     padding: .625rem 1.25rem 1.25rem 1.25rem;
     /*max-width: 50rem;*/
@@ -73,7 +68,7 @@ ul.boneline {
 #right_sellers {
     flex: 1 1;
     background-color: #bdb29e;
-    background-image: url(images/Bg-paper-dark.png);
+    /*background-image: url(images/Bg-paper-dark.png);*/
     margin: .625rem .625rem 0rem .625rem;
     padding: .625rem 1.25rem 1.25rem 1.25rem;
     /*max-width: 12rem;*/
@@ -83,7 +78,7 @@ ul.boneline {
 
 #left_bonebook:before{
 	content: " ";
-	border: .125rem solid #897d67;
+	border: .125rem solid #91856e;
 	position: absolute;
 	top: .25rem;
 	right: .25rem;
@@ -94,7 +89,7 @@ ul.boneline {
 
 #middle_current:before{
 	content: " ";
-	border: .125rem solid #897d67;
+	border: .125rem solid #91856e;
 	position: absolute;
 	top: .25rem;
 	right: .25rem;
@@ -105,7 +100,7 @@ ul.boneline {
 
 #right_sellers:before{
 	content: " ";
-	border: .125rem solid #897d67;
+	border: .125rem solid #91856e;
 	position: absolute;
 	top: .25rem;
 	right: .25rem;
@@ -114,10 +109,36 @@ ul.boneline {
 	z-index: -1;
 }
 
+.bonecontainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+
+.bonetitle {
+    display: flex;
+    flex: 2;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.bonelist {
+    list-style: none;
+    display: flex;
+    flex: 10;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width: 100%;
+    padding: 0rem;
+    margin: 0rem;
+}
+
 li.bone {
     position: relative;
     margin-right: 0.4rem;
-    margin-bottom: 0.2rem;
+    /*margin-bottom: 0.2rem;*/
 }
 
 img.bonepic {  /*Send bonepics*/
@@ -128,4 +149,16 @@ img.bonepic {  /*Send bonepics*/
     box-shadow: 0 0 .125rem .125rem rgb(29, 29, 29, 0.2);
     height: 2.25rem;
     width: 2.25rem;
+}
+
+hr.normal {
+    border: 1px solid #91856e;
+    margin: .375rem 0rem .5rem 0rem;
+    width: 100%;
+}
+
+hr.desc {
+    border: 1px solid #3e3e3e;
+    margin: .375rem 0rem .5rem 0rem;
+    width: 90%;
 }
