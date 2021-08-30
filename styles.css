@@ -38,6 +38,10 @@ p {
     padding: 0rem 0rem 1rem 1rem;
 }
 
+.none {
+    display: none;
+}
+
 #header {
     background-color: #373737;
     width: 100%;
@@ -124,6 +128,25 @@ p {
     align-items: center;
 }
 
+.fullw_center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.curr_attributes {
+    display: flex;
+    width: 100%;
+}
+
+.curr_attbox {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
 ul.bonelist {
     list-style: none;
     display: flex;
@@ -133,6 +156,11 @@ ul.bonelist {
     width: 100%;
     padding: 0rem;
     margin: 0rem;
+}
+
+ul.bonelisttext {
+    list-style: none;
+    padding: 0rem;
 }
 
 li.bone {
