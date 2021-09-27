@@ -24,7 +24,7 @@ h1 {
 
 h2 {
     color: #282520;
-    margin: .625rem 0rem 1rem 0rem;
+    margin: .625rem 0rem .5rem 0rem;
 }
 
 h3 {
@@ -204,8 +204,43 @@ img.bonepic {  /*Send bonepics*/
     border-color: #3e3e3e;
     border-width: .125rem;
     box-shadow: 0 0 .125rem .125rem rgb(29, 29, 29, 0.2);
-    height: 2.25rem;
+    height: 2.25rem; /*36 at 16 (default)*/
     width: 2.25rem;
+}
+
+img.profile {
+    border-style: solid;
+    border-color: #3e3e3e;
+    border-width: .125rem;
+    margin: .25rem;
+    box-shadow: 0 0 .125rem .125rem rgb(29, 29, 29, 0.2);
+    height: 4.0625rem; /*65 at 16 (default)*/
+    width: 3.125rem; /*50 at 16 (default)*/
+}
+
+.buyers {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.onebuyer {
+    display: flex;
+    background-color: #ddd3c4;
+    width: 100%;
+    margin: 0rem 0rem .5rem 0rem;
+    box-shadow: 0 0 .125rem .125rem rgb(29, 29, 29, 0.2);
+}
+
+.buyerinfo {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.buyerinfo_line {
+    display: flex;
+    width: 100%;
 }
 
 hr.normal {
