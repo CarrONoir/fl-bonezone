@@ -16,6 +16,43 @@ body {
     }
 }
 
+.pink {
+    color: rgb(255, 0, 255);
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.rust {
+    color: #bf5039;
+}
+
+.fate {
+    color: greenyellow;
+    font-weight: bold;
+}
+
+.green {
+    color: green;
+}
+
+.ccblue {
+    color: lightskyblue;
+}
+
+.grey {
+    color: grey;
+}
+
 h1 {
     color: #f8f8ff;
     padding: 1rem 0rem 1rem 1rem;
@@ -264,6 +301,7 @@ img.profile {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    top: 115%; /*This will be removed when the flipping is implemented.*/
 }
 
 .bonedesc_img {
@@ -280,4 +318,9 @@ hr.desc {
     border: 1px solid #3e3e3e;
     margin: .375rem 0rem .5rem 0rem;
     width: 90%;
+}
+
+hr.end {    /*Invisible, only used as spacer*/
+    border: 0px;
+    margin: .0rem 0rem .375rem 0rem;
 }
