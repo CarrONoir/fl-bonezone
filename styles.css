@@ -28,7 +28,8 @@ h2 {
 }
 
 h3 {
-    margin: .625rem 0rem .625rem 0rem;
+    margin: 0.4rem 0.2rem 0.1rem 0.2rem;
+    font-size: 1rem;
 }
 
 p {
@@ -44,11 +45,13 @@ p {
 
 #header {
     background-color: #373737;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 1);
     width: 100%;
 }
 
 #left_bonebook {
     flex: 1 1;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 1);
     background-color: #bdb29e;
     /*background-image: url(images/Bg-paper-dark.png);*/
     margin: .625rem .625rem 0rem .625rem;
@@ -61,6 +64,7 @@ p {
 #middle_current {
     flex: 1 1;
     background-color: #bdb29e;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 1);
     /*background-image: url(images/Bg-paper-dark.png);*/
     margin: .625rem .625rem 0rem .625rem;
     padding: .625rem 1.25rem 1.25rem 1.25rem;
@@ -72,6 +76,7 @@ p {
 #right_sellers {
     flex: 1 1;
     background-color: #bdb29e;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 1);
     /*background-image: url(images/Bg-paper-dark.png);*/
     margin: .625rem .625rem 0rem .625rem;
     padding: .625rem 1.25rem 1.25rem 1.25rem;
@@ -199,7 +204,6 @@ li.bone {
 }
 
 img.bonepic {  /*Send bonepics*/
-    cursor: pointer;
     border-style: solid;
     border-color: #3e3e3e;
     border-width: .125rem;
@@ -241,6 +245,29 @@ img.profile {
 .buyerinfo_line {
     display: flex;
     width: 100%;
+}
+
+.bone .ttcont {
+    display: flex;
+    position: absolute;
+    background-color: #1d1d1d;
+    color: #fff;
+    text-align: center;
+    border-style: solid;
+    border-color: #3e3e3e;
+    border-width: 2px;
+    box-shadow: 0 0 2px 2px rgb(29, 29, 29, 0.3);
+    width: 250px;
+    z-index: 2;
+    left: 50%;
+    margin-left: -125px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bonedesc_img {
+    vertical-align: middle;
 }
 
 hr.normal {
