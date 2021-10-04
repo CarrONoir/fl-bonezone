@@ -85,6 +85,8 @@ function createTT(element, bone) {
 
     //Price-and-text. (mods and finishes don't have prices)
     if (bone.pvalue) createElementModInH2("span", ttcont, bone.pvalue, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+    if (bone.pvalue == 0) createElementModInH2("span", ttcont, 0, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+    //Oh yeah 0 is false..
 
     //Source indicator (eg. Fate, Ambition etc.)
     if (bone.sourceTag) createElementModInH1("span", ttcont, bone.sourceTag);
@@ -149,7 +151,7 @@ function createTT(element, bone) {
             if (bone.supportcc_dif) createElementModInH4("span", ttcont, bone.supportcc-bone.supportcc_dif, "-", bone.supportcc, " x <span class='ccblue'>CC Support</span>");
             else createElementModInH2("span", ttcont, bone.supportcc, " x <span class='ccblue'>CC Support</span>");
         }
-        if (bone.implausibility) { //Oh yeah 0 is false..
+        if (bone.implausibility) {
             if (bone.implausibility_dif) createElementModInH4("span", ttcont, bone.implausibility-bone.implausibility_dif, "-", bone.implausibility, " x <span class='grey'>Implausibility</span>");
             else createElementModInH2("span", ttcont, bone.implausibility, " x <span class='grey'>Implausibility</span>");
         }

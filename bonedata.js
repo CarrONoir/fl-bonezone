@@ -32,7 +32,7 @@ const BONEDATA = [
         type: "frame",
         tstyle: 10,
         name: "Headless Skeleton",
-        img_link: "images/bonesmall_ph.png",
+        img_link: "images/frame_ph.png",
         pvalue: 250,
         skullslots: 1,
         barms: 2,
@@ -42,7 +42,7 @@ const BONEDATA = [
         type: "frame",
         tstyle: 10,
         name: "Supply a skeleton of your own",
-        img_link: "images/bonesmall_ph.png",
+        img_link: "images/frame_ph.png",
         pvalue: 250,
         skullslots: 1,
         barms: 2,
@@ -53,7 +53,7 @@ const BONEDATA = [
         type: "frame",
         tstyle: 15,
         name: "Human Ribcage",
-        img_link: "images/bonesmall_ph.png",
+        img_link: "images/frame_ph.png",
         pvalue: 1250,
         skullslots: 1,
         limbslots: 4,
@@ -62,7 +62,7 @@ const BONEDATA = [
         type: "frame",
         tstyle: 80,
         name: "Prismatic Frame",
-        img_link: "images/bonesmall_ph.png",
+        img_link: "images/frame_ph.png",
         pvalue: 31250,
         skullslots: 3,
         limbslots: 3,
@@ -74,14 +74,14 @@ const BONEDATA = [
     {
         type: "skull",
         name: "Cap this with a victim’s skull",
-        img_link: "images/bonesmall_ph.png",
+        img_link: "images/skull_ph.png",
         pvalue: 250,
         special: "<span class='rust'>Licentiates</span> only (free)"
     },
     {
         type: "skull",
         name: "Carved Ball of Stygian Ivory",
-        img_link: "images/bonesmall_ph.png",
+        img_link: "images/skull_ph.png",
         pvalue: 250,
         ch_lv: 6,
         ch_nm: "<span class='green'>Mithridacy</span>",
@@ -89,5 +89,41 @@ const BONEDATA = [
         implausibility: 2,
         implausibility_dif: 2,
         special: "Reduces <span class='pink'>Skullslots</span>, but doesn't count as a Skull"
+    },
+    {
+        type: "arm",
+        name: "Crustacean Pincer",
+        img_link: "images/arm_ph.png",
+        pvalue: 0,
+        menace: 1
+    },
+    {
+        type: "arm",
+        name: "Human Arm",
+        img_link: "images/arm_ph.png",
+        pvalue: 250,
+        menace: -1
+    },
+    {
+        type: "leg",
+        name: "Helical Thighbone",
+        img_link: "images/leg_ph.png",
+        pvalue: 300,
+        ch_nm: "<span class='orange'>Shapeling Arts</span>",
+        ch_lv: 6,
+        amalgamy: 2,
+        amalgamy_dif: 1,
+    },
+    {
+        type: "wing",
+        name: "Bat Wing",
+        img_link: "images/wing_ph.png",
+        pvalue: 1,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_lv: 3,
+        ch_ex: "Difficulty increases with fins",
+        menace: -1,
+        implausibility: 2,
+        implausibility_dif: 2
     }
 ]
