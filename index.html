@@ -108,7 +108,7 @@
                         <span class="middle_current_title1">Value in Pennies</span>
                     </div>
                     <div class="curr_attbox">
-                        <span class="middle_current_title1">Frame</span>
+                        <span class="middle_current_title1" id="d_framename">Select a Frame</span>
                     </div>
                     <div class="curr_attbox align_right">
                         <span class="middle_current_title1">Value in Script</span>
@@ -117,7 +117,7 @@
                 <div class="curr_attributes" style="margin-top: .25rem;"> <!-- Top line pics and values -->
                     <div class="curr_attbox align_left">
                         <img class="bonepic" src="images/coin_ph.png" alt="coin_ph"/>
-                        <span class="middle_current_title2">0</span>
+                        <span class="middle_current_title2" id="d_pvalue">0</span>
                     </div>
                     <div class="curr_attbox">
                         <img class="bonepic" src="images/frame_ph.png" alt="frame_ph"/>
@@ -155,11 +155,34 @@
                     <div class="curr_attbox"><img class="bonepic" src="images/implausibility_ph.png" alt="implausibility_ph"/></div>
                 </div>
                 <div class="curr_attributes" style="margin-top: .25rem;"> <!-- Attribute numbers--> <!-- Don't call me lazy, this is much simpler!-->
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
+                    <div class="curr_attbox" id="d_amalgamy">0</div>
+                    <div class="curr_attbox" id="d_antiquity">0</div>
+                    <div class="curr_attbox" id="d_menace">0</div>
+                    <div class="curr_attbox" id="d_supportcc">0</div>
+                    <div class="curr_attbox" id="d_implausibility">0</div>
+                </div>
+            </div>
+            <hr class="normal">
+            <div class="curr_attributes" style="margin-top: .25rem;"> <!-- Free Slot names -->
+                <div class="curr_attbox">
+                    <span class="middle_current_title1 pink2">Skullslots</span>
+                </div>
+                <div class="curr_attbox">
+                    <span class="middle_current_title1 pink2">Limbslots</span>
+                </div>
+                <div class="curr_attbox">
+                    <span class="middle_current_title1 pink2">Tailslots</span>
+                </div>
+            </div>
+            <div class="curr_attributes" style="margin-top: .25rem;"> <!-- Free Slot numbers -->
+                <div class="curr_attbox">
+                    <span class="middle_current_title1" id="d_skullslots">0</span>
+                </div>
+                <div class="curr_attbox">
+                    <span class="middle_current_title1" id="d_limbslots">0</span>
+                </div>
+                <div class="curr_attbox">
+                    <span class="middle_current_title1" id="d_tailslots">0</span>
                 </div>
             </div>
             <hr class="normal">
@@ -197,13 +220,13 @@
                     <div class="curr_attbox"><img class="bonepic" src="images/tail_ph.png" alt="tail_ph"/></div>
                 </div>
                 <div class="curr_attributes" style="margin-top: .25rem;"> <!-- Skulls and Limbs numbers-->
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
-                    <div class="curr_attbox">0</div>
+                    <div class="curr_attbox" id="d_skulls">0</div>
+                    <div class="curr_attbox" id="d_arms">0</div>
+                    <div class="curr_attbox" id="d_legs">0</div>
+                    <div class="curr_attbox" id="d_wings">0</div>
+                    <div class="curr_attbox" id="d_fins">0</div>
+                    <div class="curr_attbox" id="d_tentacles">0</div>
+                    <div class="curr_attbox" id="d_tails">0</div>
                 </div>
                 <div class="curr_attributes" style="margin-top: .25rem;"> <!-- Skulls and Limbs numbers-->
                     <div class="curr_attbox flex-column">
@@ -230,7 +253,7 @@
                 </div>
             </div>
             <hr class="normal">
-            <div> <!-- Ordered list of building steps -->
+            <div id="listorder"> <!-- Ordered list of building steps -->
                 
             </div>
         </div>

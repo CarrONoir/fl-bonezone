@@ -20,6 +20,10 @@ body {
     color: rgb(255, 0, 255);
 }
 
+.pink2 {
+    color: darkviolet;
+}
+
 .red {
     color: red;
 }
@@ -161,6 +165,7 @@ p {
 
 .middle_current_title1 { /*Top line only (default)*/
     font-weight: bold;
+    text-align: center;
 }
 
 .middle_current_title2 { /*Margin when next to pictures*/
