@@ -9,6 +9,7 @@ tstyle - only for frame types, in-game number
 name - element name (MUST HAVE)
 img_link - full path pls
 pvalue - Penny value
+pvalue_dif - ugh..
 sourceTag - Text to signify source (eg. Fate, Ambition, Seasonal etc.)
 skullslots, limbslots, tailslots - Slots (used only for frame types)
 bskulls, barms, blegs, bwings, bfins, btentacles, btails - Built-in parts (used only for frame types)
@@ -60,6 +61,78 @@ const BONEDATA = [
     },
     {
         type: "frame",
+        tstyle: 20,
+        name: "Thorned Ribcage",
+        img_link: "images/frame_ph.png",
+        pvalue: 1250,
+        skullslots: 1,
+        limbslots: 4,
+        tailslots: 1,
+        menace: 1,
+        amalgamy: 1
+    },
+    {
+        type: "frame",
+        tstyle: 30,
+        name: "Skeleton with Seven Necks",
+        img_link: "images/frame_ph.png",
+        pvalue: 6250,
+        skullslots: 7,
+        limbslots: 2,
+        blegs: 2,
+        menace: 1,
+        amalgamy: 2
+    },
+    {
+        type: "frame",
+        tstyle: 40,
+        name: "Flourishing Ribcage",
+        img_link: "images/frame_ph.png",
+        pvalue: 1250,
+        skullslots: 2,
+        limbslots: 6,
+        tailslots: 1,
+        amalgamy: 2
+    },
+    {
+        type: "frame",
+        tstyle: 50,
+        name: "Mammoth Ribcage",
+        img_link: "images/frame_ph.png",
+        pvalue: 6250,
+        skullslots: 1,
+        limbslots: 4,
+        tailslots: 1,
+        antiquity: 2,
+        special: "Requires Your Own Stall 3 (lv2)"
+    },
+    {
+        type: "frame",
+        tstyle: 60,
+        name: "Ribcage with a Bouquet of Eight Spines",
+        img_link: "images/frame_ph.png",
+        pvalue: 31250,
+        skullslots: 8,
+        limbslots: 4,
+        tailslots: 1,
+        menace: 2,
+        amalgamy: 1
+    },
+    {
+        type: "frame",
+        tstyle: 70,
+        name: "Leviathan Frame",
+        img_link: "images/frame_ph.png",
+        pvalue: 31250,
+        skullslots: 1,
+        limbslots: 2,
+        btails: 1,
+        antiquity: 1,
+        menace: 1,
+        special: "Requires Your Own Stall 5 (lv3)"
+    },
+    {
+        type: "frame",
         tstyle: 80,
         name: "Prismatic Frame",
         img_link: "images/frame_ph.png",
@@ -69,7 +142,19 @@ const BONEDATA = [
         tailslots: 3,
         antiquity: 2,
         amalgamy: 2,
-        special: "Requires Your Own Stall 3"
+        special: "Requires Your Own Stall 3 (lv2)"
+    },
+    {
+        type: "frame",
+        tstyle: 100,
+        name: "Five-Pointed Ribcage",
+        img_link: "images/frame_ph.png",
+        pvalue: 31250,
+        sourceTag: "<span class='fate'>FATE</span>",
+        skullslots: 5,
+        limbslots: 5,
+        amalgamy: 2,
+        menace: 1
     },
     {
         type: "skull",
@@ -99,10 +184,43 @@ const BONEDATA = [
     },
     {
         type: "arm",
+        name: "Knotted Humerus",
+        img_link: "images/arm_ph.png",
+        pvalue: 300,
+        pvalue_dif: 290,
+        ch_nm: "<span class='green'>Mithridacy</span>",
+        ch_lv: 6,
+        ch_ex: "Difficulty increases by 1 per non-Knotted Humerus limb",
+        amalgamy: 1,
+        implausibility: 2,
+        implausibility_dif: 2
+    },
+    {
+        type: "arm",
         name: "Human Arm",
         img_link: "images/arm_ph.png",
         pvalue: 250,
         menace: -1
+    },
+    {
+        type: "arm",
+        name: "Ivory Humerus",
+        img_link: "images/arm_ph.png",
+        pvalue: 1500,
+        ch_nm: "<span class='rust'>Kataleptic Toxicology</span>",
+        ch_lv: 6,
+        implausibility: 2,
+        implausibility_dif: 2
+    },
+    {
+        type: "arm",
+        name: "Fossilised Forelimb",
+        img_link: "images/arm_ph.png",
+        pvalue: 2750,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_lv: 11,
+        antiquity: 2,
+        antiquity_dif: 1
     },
     {
         type: "leg",
