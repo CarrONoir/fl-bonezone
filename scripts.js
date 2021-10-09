@@ -2,7 +2,7 @@ window.onload = function() {
     loadBones(BONEDATA); //Fills up the left section
 }
 
-let pvalue = 0;
+let pvalue = 0;let pvalue_dif = 0;
 let amalgamy = 0;let amalgamy_dif = 0;
 let antiquity = 0;let antiquity_dif = 0;
 let menace = 0;let menace_dif = 0;
@@ -12,6 +12,7 @@ let skullslots = 0;let limbslots = 0;let tailslots = 0;
 let skulls = 0;let arms = 0;let legs = 0;let wings = 0;let fins = 0;let tentacles = 0;let tails = 0;
 let tstyle = 0;
 let listlenght = 0;
+let exhaustion = 0;let exhaustion_dif = 0;//You never know the future
 let state_comp = 0; //0-frame 1-bones 2-mods
 
 //Creates all the bones from the bonelist array
@@ -97,7 +98,10 @@ function createTT(element, bone) {
     createElementModInH1("h3", ttcont, bone.name);
 
     //Price-and-text. (mods and finishes don't have prices)
-    if (bone.pvalue) createElementModInH2("span", ttcont, bone.pvalue, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+    if (bone.pvalue) {
+        if (bone.pvalue_dif) createElementModInH4("span", ttcont, bone.pvalue-bone.pvalue_dif, "-", bone.pvalue, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+        else createElementModInH2("span", ttcont, bone.pvalue, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+    }
     if (bone.pvalue == 0) createElementModInH2("span", ttcont, 0, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
     //Oh yeah 0 is false..
 
@@ -147,7 +151,7 @@ function createTT(element, bone) {
         }
     }
 
-    if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility) { /*Attributes*/
+    if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.exhaustion) { /*Attributes*/
         if (bone.antiquity) {
             if (bone.antiquity_dif) createElementModInH4("span", ttcont, bone.antiquity-bone.antiquity_dif, "-", bone.antiquity, " x <span class='yellow'>Antiquity</span>");
             else createElementModInH2("span", ttcont, bone.antiquity, " x <span class='yellow'>Antiquity</span>");
@@ -167,6 +171,10 @@ function createTT(element, bone) {
         if (bone.implausibility) {
             if (bone.implausibility_dif) createElementModInH4("span", ttcont, bone.implausibility-bone.implausibility_dif, "-", bone.implausibility, " x <span class='grey'>Implausibility</span>");
             else createElementModInH2("span", ttcont, bone.implausibility, " x <span class='grey'>Implausibility</span>");
+        }
+        if (bone.exhaustion) {
+            if (bone.exhaustion_dif) createElementModInH4("span", ttcont, bone.exhaustion-bone.exhaustion_dif, "-", bone.exhaustion, " x <span class='grey'>Exhaustion</span>");
+            else createElementModInH2("span", ttcont, bone.exhaustion, " x <span class='grey'>Exhaustion</span>");
         }
         if (bone.special) {
             createElementModAddClass("hr", ttcont, "desc");
@@ -197,6 +205,7 @@ function addBone(bone) {
         case 0:
             if (bone.type == "frame") {
                 document.getElementById("d_framename").innerHTML = bone.name;//Shut up I know, this is an exception!
+                //On second tought, these could've been arranged in two arrays...
                 if (bone.skullslots) skullslots = bone.skullslots;
                 if (bone.limbslots) limbslots = bone.limbslots;
                 if (bone.tailslots) tailslots = bone.tailslots;
@@ -308,7 +317,11 @@ function updateDisplay() {
 /*Adds a line to the bottom of the middle column, with info about the specific bone */
 function addLine(bone) {
     var line = document.createElement("div");
-    line.innerHTML = (listlenght+1) + ". " + bone.name;
+    createElementModInH3("div", line, (listlenght+1), ". ", bone.name);
+    if (bone.ch_nm) {
+        createElementModInH4("span", line, "&nbsp&nbsp&nbsp&nbsp", bone.ch_nms, " ", bone.ch_lv);
+        
+    }
     document.getElementById("listorder").appendChild(line);
     listlenght++;
 }

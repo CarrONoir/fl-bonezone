@@ -8,16 +8,18 @@ type - element type (frame,skull,arm,leg,wing,fin,tentacle,tail,mod,finish) Many
 tstyle - only for frame types, in-game number
 name - element name (MUST HAVE)
 img_link - full path pls
-pvalue - Penny value
-pvalue_dif - ugh..
+pvalue - Penny value (max)
+pvalue_dif - for bones that can have differing values (this is the difference)
 sourceTag - Text to signify source (eg. Fate, Ambition, Seasonal etc.)
 skullslots, limbslots, tailslots - Slots (used only for frame types)
 bskulls, barms, blegs, bwings, bfins, btentacles, btails - Built-in parts (used only for frame types)
 ch_lv - Challenge level (base)
 ch_nm - Challenge name
+ch_nms - Shortened challange name
 ch_ex - Extra text for challenge
 antiquity, amalgamy, menace, supportcc, implausibility - Attributes (max)
 antiquity_dif, amalgamy_dif, menace_dif, supportcc_dif, implausibility_dif - Attributes (min-difference), when there are challenges, higher minus the lower ('cuz a zero would be false in logistics)
+exhaustion - Exhaustion added by adding part (currently only at Custom-Engraved Skulls)
 special - Additional text (always displayed last)
 
 Basic order (optional, but more organised if followed):
@@ -170,10 +172,166 @@ const BONEDATA = [
         pvalue: 250,
         ch_lv: 6,
         ch_nm: "<span class='green'>Mithridacy</span>",
+        ch_nms: "<span class='green'>Mi</span>",
         ch_ex: "Reduced by 1 per Skull installed",
         implausibility: 2,
         implausibility_dif: 2,
         special: "Reduces <span class='pink'>Skullslots</span>, but doesn't count as a Skull"
+    },
+    {
+        type: "skull",
+        name: "Rubbery Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 600,
+        sourceTag: "<span class='fate'>FATE</span>",
+        ch_nm: "<span class='orange'>Shapeling Arts</span>",
+        ch_nms: "<span class='orange'>SA</span>",
+        ch_lv: 1,
+        amalgamy: 1
+    },
+    {
+        type: "skull",
+        name: "Horned Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 1250,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_nms: "<span class='mblue'>MA</span>",
+        ch_lv: 6,
+        antiquity: 1,
+        menace: 2,
+        menace_dif: 1
+    },
+    {
+        type: "skull",
+        name: "Pentagrammic Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 1250,
+        sourceTag: "<span class='fate'>FATE</span>",
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_nms: "<span class='mblue'>MA</span>",
+        ch_lv: 6,
+        amalgamy: 2,
+        amalgamy_dif: 1,
+        menace: 1
+    },
+    {
+        type: "skull",
+        name: "Counterfeit Head of John the Baptist",
+        img_link: "images/skull_ph.png",
+        pvalue: 1250,
+        ch_nm: "<span class='red'>Artisan of the Red Science</span>",
+        ch_nms: "<span class='red'>AotRS</span>",
+        ch_lv: 6,
+        supportcc: 1,
+        special: "Also costs 10 x Peppercaps and 500 x Fragments"
+    },
+    {
+        type: "skull",
+        name: "Skull in Coral",
+        img_link: "images/skull_ph.png",
+        pvalue: 1750,
+        ch_nm: "<span class='orange'>Shapeling Arts</span>",
+        ch_nms: "<span class='orange'>SA</span>",
+        ch_lv: 8,
+        ch_ex: "Every point of <span class='orange'>Amalgamy</span> reduces difficulty by 5",
+        amalgamy: 2,
+        amalgamy_dif: 1,
+        implausibility: 1,
+        implausibility_dif: 1,
+        special: "Also costs 1 x Knob of Scintillack"
+    },
+    {
+        type: "skull",
+        name: "Plated Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 2500,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_nms: "<span class='mblue'>MA</span>",
+        ch_lv: 4,
+        menace: 2,
+        menace_dif: 1
+    },
+    {
+        type: "skull",
+        name: "Eyeless Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 3000,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_nms: "<span class='mblue'>MA</span>",
+        ch_lv: 6,
+        menace: 2,
+        menace_dif: 1
+    },
+    {
+        type: "skull",
+        name: "Doubled Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 6250,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_nms: "<span class='mblue'>MA</span>",
+        ch_lv: 4,
+        antiquity: 2,
+        antiquity_dif: 1,
+        amalgamy: 1,
+        special: "Adds 2 Skulls while only using one <span class='pink'>Skullslot</span>"
+    },
+    {
+        type: "skull",
+        name: "Sabre-toothed Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 6250,
+        ch_nm: "<span class='mblue'>Monstrous Anatomy</span>",
+        ch_nms: "<span class='mblue'>MA</span>",
+        ch_lv: 6,
+        antiquity: 1,
+        menace: 1,
+        menace_dif: 1
+    },
+    {
+        type: "skull",
+        name: "Bright Brass Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 6500,
+        pvalue_dif: 500,
+        ch_nm: "<span class='green'>Mithridacy</span>",
+        ch_nms: "<span class='green'>Mi</span>",
+        ch_lv: 6,
+        implausibility: 6,
+        implausibility_dif: 4,
+        special: "Also costs 200 x Brass on success"
+    },
+    {
+        type: "skull",
+        name: "Severed Chimaerical Head of the Vake",
+        img_link: "images/skull_ph.png",
+        pvalue: 6500,
+        sourceTag: "<span class='green' style='font-weight:bold'>AMBITION: BaL!</span>",
+        ch_nm: "<span class='red'>Artisan of the Red Science</span>",
+        ch_nms: "<span class='red'>AotRS</span>",
+        ch_lv: 6,
+        menace: 3,
+        special: "Also costs 6000 x Fragments on success"
+    },
+    {
+        type: "skull",
+        name: "A Custom-Engraved Skull",
+        img_link: "images/skull_ph.png",
+        pvalue: 10000,
+        sourceTag: "<span class='feastrose'>FEAST OF THE ROSE</span>",
+        implausibility: 2,
+        implausibility_dif: 2,
+        exhaustion: 2
+    },
+    {
+        type: "skull",
+        name: "Your Own Severed Head",
+        img_link: "images/skull_ph.png",
+        pvalue: -250,
+        sourceTag: "<span class='grey' style='font-weight:bold'>SMEN</span>",
+        ch_nm: "<span class='red'>Artisan of the Red Science</span>",
+        ch_nms: "<span class='red'>AotRS</span>",
+        ch_lv: 6,
+        special: "Also costs 1000 x Fragments on success"
     },
     {
         type: "arm",
