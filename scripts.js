@@ -48,26 +48,11 @@ function createBone(bone_spec) {
     document.getElementById(bone_spec.type).appendChild(bone);
 }
 
-//Hey JavaScript where is my overloading huh?
-//Creates and element of type, assigns it under parent, and loads the innerHTML of new element with a number of parameters (4,3,2 or 1 respectively)
-function createElementModInH4(type, parent, tfirst, tsecond, tthird, tfourth) {
+
+//Creates and element of type, assigns it under parent, and loads the innerHTML of new element innH
+function createElementModInH(type, parent, innH) {
     var telem = document.createElement(type);
-    telem.innerHTML = tfirst + tsecond + tthird + tfourth;
-    parent.appendChild(telem);
-}
-function createElementModInH3(type, parent, tfirst, tsecond, tthird) {
-    var telem = document.createElement(type);
-    telem.innerHTML = tfirst + tsecond + tthird;
-    parent.appendChild(telem);
-}
-function createElementModInH2(type, parent, tfirst, tsecond) {
-    var telem = document.createElement(type);
-    telem.innerHTML = tfirst + tsecond;
-    parent.appendChild(telem);
-}
-function createElementModInH1(type, parent, tfirst) {
-    var telem = document.createElement(type);
-    telem.innerHTML = tfirst;
+    telem.innerHTML = innH;
     parent.appendChild(telem);
 }
 
@@ -78,6 +63,20 @@ function createElementModAddClass(type, parent, classname) {
     parent.appendChild(telem);
 }
 
+//Creates a radio input with a label after it, connects them (Yeah, accessibility!), and assigns them under parent
+function createRadioInput(parent, id, name, value, labelText, def) {
+    var telem = document.createElement("label");
+    telem.setAttribute("for", id);
+    telem.innerHTML = labelText;
+    var telem2 = document.createElement("input");
+    telem2.type = "radio";
+    telem2.id = id;
+    telem2.name = name;
+    telem2.value = value;
+    if (def) telem2.setAttribute("checked", "checked");
+    parent.appendChild(telem2);
+    parent.appendChild(telem);
+}
 
 /*Creates a tooltip of a specific bone, and assigns it under element*/
 /*This must cycle through and check all the possible properties a bone could have, comparing it to the data array
@@ -95,42 +94,42 @@ function createTT(element, bone) {
     ttcont.classList.add("ttcont");
 
     //Constant name
-    createElementModInH1("h3", ttcont, bone.name);
+    createElementModInH("h3", ttcont, bone.name);
 
     //Price-and-text. (mods and finishes don't have prices)
     if (bone.pvalue) {
-        if (bone.pvalue_dif) createElementModInH4("span", ttcont, bone.pvalue-bone.pvalue_dif, "-", bone.pvalue, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
-        else createElementModInH2("span", ttcont, bone.pvalue, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+        if (bone.pvalue_dif) createElementModInH("span", ttcont, bone.pvalue-bone.pvalue_dif + "-" + bone.pvalue + " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+        else createElementModInH("span", ttcont, bone.pvalue + " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
     }
-    if (bone.pvalue == 0) createElementModInH2("span", ttcont, 0, " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
+    if (bone.pvalue == 0) createElementModInH("span", ttcont, 0 + " <img class='bonedesc_img' src='images/coin_ph.png' alt='bonesmall_ph' width='25' height='25'/>");
     //Oh yeah 0 is false..
 
     //Source indicator (eg. Fate, Ambition etc.)
-    if (bone.sourceTag) createElementModInH1("span", ttcont, bone.sourceTag);
+    if (bone.sourceTag) createElementModInH("span", ttcont, bone.sourceTag);
     
     //Constant hr. There is always something after the price.
     createElementModAddClass("hr", ttcont, "desc");
 
     //Torso (frame) style (While frames are special, it can't just check for frames, due to ordering sheninigans. (Built in parts come after the attributes.))
     if (bone.tstyle) {
-        createElementModInH2("span", ttcont, "Torso Style: ", bone.tstyle);
+        createElementModInH("span", ttcont, "Torso Style: " + bone.tstyle);
         createElementModAddClass("hr", ttcont, "desc");
     }
 
     //The open slots on frames
     if (bone.skullslots || bone.limbslots || bone.tailslots) {
-        if (bone.skullslots) createElementModInH2("span", ttcont, bone.skullslots, " x <span class='pink'>Skullslots</span>");
-        if (bone.limbslots) createElementModInH2("span", ttcont, bone.limbslots, " x <span class='pink'>Limbslots</span>");
-        if (bone.tailslots) createElementModInH2("span", ttcont, bone.tailslots, " x <span class='pink'>Tailslots</span>");
-        if (bone.bskulls || bone.barms || bone.blegs || bone.bwings || bone.bfins || bone.btentacles || bone.btails || bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.special) { /*Is there more?*/
+        if (bone.skullslots) createElementModInH("span", ttcont, bone.skullslots + " x <span class='pink'>Skullslots</span>");
+        if (bone.limbslots) createElementModInH("span", ttcont, bone.limbslots + " x <span class='pink'>Limbslots</span>");
+        if (bone.tailslots) createElementModInH("span", ttcont, bone.tailslots + " x <span class='pink'>Tailslots</span>");
+        if (bone.bskulls || bone.barms || bone.blegs || bone.bwings || bone.bfins || bone.btentacles || bone.btails || bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.special) { //Is there more?
             createElementModAddClass("hr", ttcont, "desc");
         }
     }
 
     //Challanges. Frames and bone attribues (like slots) don't mix with a precise database.
     if (bone.ch_lv && bone.ch_nm) {
-        createElementModInH3("span", ttcont, bone.ch_lv, " ", bone.ch_nm);
-        if (bone.ch_ex) createElementModInH1("span", ttcont, bone.ch_ex);
+        createElementModInH("span", ttcont, bone.ch_lv + " " + bone.ch_nm);
+        if (bone.ch_ex) createElementModInH("span", ttcont, bone.ch_ex);
         if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.special) {
             createElementModAddClass("hr", ttcont, "desc");
         }
@@ -138,51 +137,53 @@ function createTT(element, bone) {
 
     //For frames that come with built-in parts
     if (bone.bskulls || bone.barms || bone.blegs || bone.bwings || bone.bfins || bone.btentacles || bone.btails) {
-        createElementModInH1("span", ttcont, "Built-in:");
-        if (bone.bskulls) createElementModInH2("span", ttcont, bone.bskulls, " x Skulls");
-        if (bone.barms) createElementModInH2("span", ttcont, bone.barms, " x Arms");
-        if (bone.blegs) createElementModInH2("span", ttcont, bone.blegs, " x Legs");
-        if (bone.bwings) createElementModInH2("span", ttcont, bone.bwings, " x Wings");
-        if (bone.bfins) createElementModInH2("span", ttcont, bone.bfins, " x Fins");
-        if (bone.btentacles) createElementModInH2("span", ttcont, bone.btentacles, " x Tentacles");
-        if (bone.btails) createElementModInH2("span", ttcont, bone.btails, " x Tails");
-        if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.special) { /*Is there more?*/
+        createElementModInH("span", ttcont, "Built-in:");
+        if (bone.bskulls) createElementModInH("span", ttcont, bone.bskulls + " x Skulls");
+        if (bone.barms) createElementModInH("span", ttcont, bone.barms + " x Arms");
+        if (bone.blegs) createElementModInH("span", ttcont, bone.blegs + " x Legs");
+        if (bone.bwings) createElementModInH("span", ttcont, bone.bwings + " x Wings");
+        if (bone.bfins) createElementModInH("span", ttcont, bone.bfins + " x Fins");
+        if (bone.btentacles) createElementModInH("span", ttcont, bone.btentacles + " x Tentacles");
+        if (bone.btails) createElementModInH("span", ttcont, bone.btails + " x Tails");
+        if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.special) { //Is there more?
             createElementModAddClass("hr", ttcont, "desc");
         }
     }
 
-    if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.exhaustion) { /*Attributes*/
+    //Attributes
+    if (bone.antiquity || bone.menace || bone.amalgamy || bone.supportcc || bone.implausibility || bone.exhaustion) {
         if (bone.antiquity) {
-            if (bone.antiquity_dif) createElementModInH4("span", ttcont, bone.antiquity-bone.antiquity_dif, "-", bone.antiquity, " x <span class='yellow'>Antiquity</span>");
-            else createElementModInH2("span", ttcont, bone.antiquity, " x <span class='yellow'>Antiquity</span>");
+            if (bone.antiquity_dif) createElementModInH("span", ttcont, bone.antiquity-bone.antiquity_dif + "-" + bone.antiquity + " x <span class='yellow'>Antiquity</span>");
+            else createElementModInH("span", ttcont, bone.antiquity + " x <span class='yellow'>Antiquity</span>");
         }
         if (bone.menace) {
-            if (bone.menace_dif) createElementModInH4("span", ttcont, bone.menace-bone.menace_dif, "-", bone.menace, " x <span class='red'>Menace</span>");
-            else createElementModInH2("span", ttcont, bone.menace, " x <span class='red'>Menace</span>");
+            if (bone.menace_dif) createElementModInH("span", ttcont, bone.menace-bone.menace_dif + "-" + bone.menace + " x <span class='red'>Menace</span>");
+            else createElementModInH("span", ttcont, bone.menace + " x <span class='red'>Menace</span>");
         }
         if (bone.amalgamy) {
-            if (bone.amalgamy_dif) createElementModInH4("span", ttcont, bone.amalgamy-bone.amalgamy_dif, "-", bone.amalgamy, " x <span class='orange'>Amalgamy</span>");
-            else createElementModInH2("span", ttcont, bone.amalgamy, " x <span class='orange'>Amalgamy</span>");
+            if (bone.amalgamy_dif) createElementModInH("span", ttcont, bone.amalgamy-bone.amalgamy_dif + "-" + bone.amalgamy + " x <span class='orange'>Amalgamy</span>");
+            else createElementModInH("span", ttcont, bone.amalgamy + " x <span class='orange'>Amalgamy</span>");
         }
         if (bone.supportcc) {
-            if (bone.supportcc_dif) createElementModInH4("span", ttcont, bone.supportcc-bone.supportcc_dif, "-", bone.supportcc, " x <span class='ccblue'>CC Support</span>");
-            else createElementModInH2("span", ttcont, bone.supportcc, " x <span class='ccblue'>CC Support</span>");
+            if (bone.supportcc_dif) createElementModInH("span", ttcont, bone.supportcc-bone.supportcc_dif + "-" + bone.supportcc + " x <span class='ccblue'>CC Support</span>");
+            else createElementModInH("span", ttcont, bone.supportcc + " x <span class='ccblue'>CC Support</span>");
         }
         if (bone.implausibility) {
-            if (bone.implausibility_dif) createElementModInH4("span", ttcont, bone.implausibility-bone.implausibility_dif, "-", bone.implausibility, " x <span class='grey'>Implausibility</span>");
-            else createElementModInH2("span", ttcont, bone.implausibility, " x <span class='grey'>Implausibility</span>");
+            if (bone.implausibility_dif) createElementModInH("span", ttcont, bone.implausibility-bone.implausibility_dif + "-" + bone.implausibility + " x <span class='grey'>Implausibility</span>");
+            else createElementModInH("span", ttcont, bone.implausibility + " x <span class='grey'>Implausibility</span>");
         }
         if (bone.exhaustion) {
-            if (bone.exhaustion_dif) createElementModInH4("span", ttcont, bone.exhaustion-bone.exhaustion_dif, "-", bone.exhaustion, " x <span class='grey'>Exhaustion</span>");
-            else createElementModInH2("span", ttcont, bone.exhaustion, " x <span class='grey'>Exhaustion</span>");
+            if (bone.exhaustion_dif) createElementModInH("span", ttcont, bone.exhaustion-bone.exhaustion_dif + "-" + bone.exhaustion + " x <span class='grey'>Exhaustion</span>");
+            else createElementModInH("span", ttcont, bone.exhaustion + " x <span class='grey'>Exhaustion</span>");
         }
         if (bone.special) {
             createElementModAddClass("hr", ttcont, "desc");
         }
     }
 
-    if (bone.special) { /*Extra text*/
-        createElementModInH1("span", ttcont, bone.special);
+    //Extra text
+    if (bone.special) {
+        createElementModInH("span", ttcont, bone.special);
     }
 
     //Adds a little space to the end
@@ -191,7 +192,7 @@ function createTT(element, bone) {
     element.appendChild(ttcont);
 }
 
-/*Deletes all currently active tooltips. There shouldn't be more than 1 at any time, but just to be safe*/
+//Deletes all currently active tooltips. There shouldn't be more than 1 at any time, but just to be safe
 function deleteTT() {
     var tt = document.getElementsByClassName("ttcont");
     for (let i=0;i<tt.length;i++) {
@@ -199,7 +200,7 @@ function deleteTT() {
     }
 }
 
-/*Adds selected bone to the current calculation.*/
+//Adds selected bone to the current calculation.
 function addBone(bone) {
     switch (state_comp) {
         case 0:
@@ -287,7 +288,7 @@ function addBone(bone) {
     updateDisplay();
 }
 
-/*Updates the display accoding to the numbers in the inner calculation.*/
+//Updates the display accoding to the numbers in the inner calculation.
 function updateDisplay() {
     document.getElementById("d_pvalue").innerHTML = pvalue;
     document.getElementById("d_skulls").innerHTML = skulls;
@@ -314,13 +315,15 @@ function updateDisplay() {
     else document.getElementById("d_implausibility").innerHTML = implausibility;
 }
 
-/*Adds a line to the bottom of the middle column, with info about the specific bone */
+//Adds a line to the bottom of the middle column, with info about the specific bone
 function addLine(bone) {
     var line = document.createElement("div");
-    createElementModInH3("div", line, (listlenght+1), ". ", bone.name);
+    createElementModInH("div", line, (listlenght+1) + ". " + bone.name);
     if (bone.ch_nm) {
-        createElementModInH4("span", line, "&nbsp&nbsp&nbsp&nbsp", bone.ch_nms, " ", bone.ch_lv);
-        
+        createElementModInH("span", line, "&nbsp&nbsp&nbsp&nbsp" + bone.ch_nms + " " + bone.ch_lv); //I don't like those spaces...
+        createRadioInput(line, "ch"+listlenght+"s", "challenge"+listlenght, "Success", "Success", false);
+        createRadioInput(line, "ch"+listlenght+"f", "challenge"+listlenght, "Fail", "Fail", false);
+        createRadioInput(line, "ch"+listlenght+"u", "challenge"+listlenght, "Unknown", "Unknown", true);
     }
     document.getElementById("listorder").appendChild(line);
     listlenght++;
